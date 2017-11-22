@@ -1,0 +1,75 @@
+{
+  "name": "@atomist/automate-graphql-schema",
+  "version": "0.1.4",
+  "description": "let's automate this internally",
+  "author": "Atomist.",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atomist/automate-graphql-schema.git"
+  },
+  "keywords": [
+    "atomist",
+    "parser"
+  ],
+  "homepage": "https://github.com/atomist/automate-graphql-schema#readme",
+  "bugs": {
+    "url": "https://github.com/atomist/automate-graphql-schema/issues"
+  },
+  "dependencies": {
+    "@atomist/automation-client": "^0.3.3",
+    "@atomist/slack-messages": "^0.12.1",
+    "app-root-path": "^2.0.1",
+    "cfenv": "^1.0.4",
+    "github": "^11.0.0",
+    "sha.js": "^2.4.9"
+  },
+  "devDependencies": {
+    "@types/app-root-path": "^1.2.4",
+    "@types/mocha": "^2.2.41",
+    "@types/node": "^8.0.31",
+    "@types/power-assert": "^1.4.29",
+    "@types/tmp": "0.0.33",
+    "espower-typescript": "^8.0.2",
+    "graphql-code-generator": "^0.8.13",
+    "mocha": "^3.5.3",
+    "nodemon": "^1.12.0",
+    "npm-run-all": "^4.1.1",
+    "power-assert": "^1.4.4",
+    "supervisor": "^0.12.0",
+    "tmp": "0.0.33",
+    "ts-node": "^3.3.0",
+    "tslint": "^5.4.3",
+    "typedoc": "^0.8.0",
+    "typescript": "2.5.2",
+    "typescript-formatter": "^6.0.0"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "autotest": "supervisor -q -n exit -e ts -x npm -- test",
+    "build": "npm run lint && npm run compile && npm test",
+    "clean": "npm run clean-js ; rm -rf *-v8.log profile.txt build",
+    "clean-js": "find src test -type f -name '*.js' -print0 | xargs -0 rm -f",
+    "compile": "npm run gql:gen && tsc -p .",
+    "distclean": "npm run clean ; rm -rf node_modules",
+    "fmt": "tsfmt --replace",
+    "gql:gen": "gql-gen --file node_modules/@atomist/automation-client/graph/schema.cortex.json --template typescript -m --out ./src/typings/ \"./graphql/**/*.graphql\"",
+    "lint": "tslint --format verbose --project . --exclude '{build,node_modules}/**' '**/*.ts'",
+    "lint-fix": "npm run lint -- --fix",
+    "test": "mocha --compilers ts:espower-typescript/guess 'test/**/*.ts'",
+    "testone": "mocha --compilers ts:espower-typescript/guess \"test/**/${TEST:-*.ts}\"",
+    "typedoc": "typedoc --mode modules --excludeExternals",
+    "benchmark": "mocha --prof --compilers ts:espower-typescript/guess \"test/**/*Benchmark.ts\"; node --prof-process isolate-* > profile.txt",
+    "start": "npm run compile && atomist-client --open=true",
+    "autostart": "npm-run-all --parallel watch:build watch:server --print-label",
+    "watch:build": "tsc --watch",
+    "watch:server": "nodemon node_modules/@atomist/automation-client/start.client.js --watch './build'",
+    "cf:push": "npm run clean && npm run compile && cf target -s production && cf push "
+  },
+  "engines": {
+    "node": "8.5.x",
+    "npm": "5.3.x"
+  }
+}

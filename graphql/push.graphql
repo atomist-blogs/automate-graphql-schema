@@ -1,0 +1,24 @@
+subscription PushWithRepo {
+    Push {
+        after {
+            sha
+        }
+        before {
+            sha
+        }
+        repo {
+            owner
+            name
+            channels {
+                name
+            }
+            org {
+                provider {
+                    url
+                    apiUrl
+                    gitUrl
+                }
+            }
+        }
+    }
+}

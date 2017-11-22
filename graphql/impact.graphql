@@ -1,0 +1,27 @@
+subscription PushImpact {
+    PushImpact { 
+        data
+        url
+        push {
+            branch
+     after {
+       sha
+     }
+     repo {
+       owner
+       name
+       channels {
+         name
+       }
+       defaultBranch
+       org {
+         provider {
+           url
+           apiUrl
+           gitUrl
+         }
+       }
+     }
+     }
+    }
+  }

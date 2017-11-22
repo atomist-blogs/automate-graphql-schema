@@ -1,0 +1,12 @@
+applications:
+- name: automate-graphql-schema
+  command: $(npm bin)/atomist-client
+  memory: 128M
+  buildpack: https://github.com/cloudfoundry/nodejs-buildpack
+  env:
+    SUPPRESS_NO_CONFIG_WARNING: true
+  services:
+  - github-token
+  - staging-neo4j
+  - production-neo4j
+  - atomist-webhook

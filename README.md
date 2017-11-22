@@ -10,7 +10,7 @@ To peruse this code, I recommend starting with [src/atomist.config.ts](src/atomi
 This configures the automations described in the video:
 
 *  a "deploy graphql schema" [command](src/graphql-schema/PushSchemaToNeo.ts)
-*  respond to GitHub pushes by noticing schema changes in [NoticeSchemaChange.ts](src/graphql-schema/Notice)
+*  respond to GitHub pushes by noticing schema changes in [NoticeSchemaChange.ts](src/graphql-schema/NoticeSchemaChange.ts)
 *  respond to changes in the schema by sending a message in [SuggestSchemaDeploy.ts](src/graphql-schema/SuggestSchemaDeploy.ts)
 
 If you run this code yourself, it won't do much for you, unless you have a setup just like ours. 

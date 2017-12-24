@@ -11,6 +11,7 @@ import {
 } from "@atomist/automation-client/Handlers";
 import { logger } from "@atomist/automation-client/internal/util/logger";
 import * as slack from "@atomist/slack-messages/SlackMessages";
+import * as _ from "lodash";
 import shajs = require("sha.js");
 import { configuration } from "../atomist.config";
 import * as graphql from "../typings/types";
@@ -23,7 +24,6 @@ import {
     SchemaLocation,
 } from "./common";
 import { pushFingerprint } from "./fingerprint";
-import * as _ from "lodash";
 
 /**
  * This produces a fingerprint on a commit and passes it back to Atomist.

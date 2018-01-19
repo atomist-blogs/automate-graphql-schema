@@ -20,6 +20,7 @@ const webhookCreds = appEnv.getServiceCreds("atomist-webhook");
 // This automation will need repo:read and org:read scopes
 const token = tokenCreds ? tokenCreds.token : process.env.GITHUB_TOKEN;
 
+console.log("TEAM_ID env var: " + process.env.TEAM_ID);
 const teamId = process.env.TEAM_ID || "T29E48P34"; // atomist-community
 
 export const configuration: Configuration = {

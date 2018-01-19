@@ -17,7 +17,7 @@
     "url": "https://github.com/atomist/automate-graphql-schema/issues"
   },
   "dependencies": {
-    "@atomist/automation-client": "^0.3.3",
+    "@atomist/automation-client": "^0.6.0",
     "@atomist/slack-messages": "^0.12.1",
     "app-root-path": "^2.0.1",
     "cfenv": "^1.0.4",
@@ -26,23 +26,23 @@
   },
   "devDependencies": {
     "@types/app-root-path": "^1.2.4",
-    "@types/mocha": "^2.2.41",
-    "@types/node": "^8.0.31",
+    "@types/mocha": "^2.2.46",
+    "@types/node": "^8.5.9",
     "@types/power-assert": "^1.4.29",
     "@types/tmp": "0.0.33",
-    "espower-typescript": "^8.0.2",
-    "graphql-code-generator": "^0.8.13",
+    "espower-typescript": "^8.1.2",
+    "graphql-code-generator": "^0.8.14",
     "mocha": "^3.5.3",
-    "nodemon": "^1.12.0",
-    "npm-run-all": "^4.1.1",
+    "nodemon": "^1.14.11",
+    "npm-run-all": "^4.1.2",
     "power-assert": "^1.4.4",
     "supervisor": "^0.12.0",
     "tmp": "0.0.33",
     "ts-node": "^3.3.0",
-    "tslint": "^5.4.3",
+    "tslint": "^5.9.1",
     "typedoc": "^0.8.0",
     "typescript": "2.5.2",
-    "typescript-formatter": "^6.0.0"
+    "typescript-formatter": "^6.1.0"
   },
   "directories": {
     "test": "test"
@@ -62,7 +62,7 @@
     "testone": "mocha --compilers ts:espower-typescript/guess \"test/**/${TEST:-*.ts}\"",
     "typedoc": "typedoc --mode modules --excludeExternals",
     "benchmark": "mocha --prof --compilers ts:espower-typescript/guess \"test/**/*Benchmark.ts\"; node --prof-process isolate-* > profile.txt",
-    "start": "npm run compile && atomist-client --open=true",
+    "start": "atomist start",
     "autostart": "npm-run-all --parallel watch:build watch:server --print-label",
     "watch:build": "tsc --watch",
     "watch:server": "nodemon node_modules/@atomist/automation-client/start.client.js --watch './build'",

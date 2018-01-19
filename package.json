@@ -1,6 +1,6 @@
 {
   "name": "@atomist/automate-graphql-schema",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "let's automate this internally",
   "author": "Atomist.",
   "license": "GPL-3.0",
